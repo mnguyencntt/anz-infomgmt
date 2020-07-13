@@ -1,0 +1,49 @@
+spring:
+  main:
+    banner-mode: "off"
+    allow-bean-definition-overriding: true
+  jackson:
+    mapper:
+      default-view-inclusion: true
+  datasource:
+    initialization-mode: never
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/anzplatform?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: Minh7891@
+  jpa:
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: localhost
+    port: 6379
+  http:
+    log-request-details: true
+
+hibernate:
+  dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  hbm2ddl.auto: update
+  implicit_naming_strategy: jpa
+  format_sql: false
+  show_sql: false
+
+logging:
+  level:
+    ROOT: INFO
+    #org.hibernate: ERROR
+    #org.springframework.web: DEBUG
+  com.anz.platform: DEBUG
+
+server:
+  servlet:
+    context-path: /api/anzplatform/v1
+  port: 8080
+
+application:
+  name: anz-platform
+  env: local
+
+login_usernames: anzPlatform1|anzPlatform2
+login_passwords: anz123|anz123
+
+healthcheck_path: /api/anzplatform/v1/health

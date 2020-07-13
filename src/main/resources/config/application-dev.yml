@@ -1,0 +1,49 @@
+spring:
+  # turn off spring banner on startup
+  main:
+    banner-mode: "off"
+    allow-bean-definition-overriding: true
+  jackson:
+    mapper:
+      # include the attributes with no view defined as default
+      default-view-inclusion: true
+  datasource:
+    platform: hsql
+    initialization-mode: never
+    driver-class-name: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:mem:test;sql.syntax_pgs=true
+    username: sa
+    password: ""
+  # Redis
+  redis:
+    host: localhost
+    port: 6379
+
+# Hibernate Configuration
+hibernate:
+  dialect: org.hibernate.dialect.HSQLDialect
+  hbm2ddl.auto: update
+  implicit_naming_strategy: jpa
+  format_sql: false
+  show_sql: false  
+
+logging:
+  level:
+    ROOT: INFO
+    #org.hibernate: ERROR
+    #org.springframework.web: DEBUG
+  com.anz.platform: DEBUG
+
+server:
+  servlet:
+    context-path: /api/anzplatform/v1
+  port: 8080
+
+application:
+  name: anz-platform
+  env: local
+
+login_usernames: anzPlatform1|anzPlatform2
+login_passwords: anz123|anz123
+
+healthcheck_path: /api/anzplatform/v1/health
